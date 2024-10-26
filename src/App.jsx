@@ -7,6 +7,7 @@ import ProductPage from "./pages/ProductPage";
 import CategoryPage from "./pages/CategoryPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import { ProductProvider } from "./contexts/ProductContext";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
         element: <UserPage />,
       },
       {
-        path: "/product",
+        path: "/product/:id",
         element: <ProductPage />,
       },
       {
@@ -45,7 +46,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ProductProvider>
+      <RouterProvider router={router} />
+    </ProductProvider>
+  );
 }
 
 export default App;
